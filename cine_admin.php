@@ -218,7 +218,6 @@ if ($error) {
         echo  ", " . $fila["protagonista3"] . "</p>";
         echo  "<p><b>Hora: </b>" . $fila["hora"] . "</p>";
         echo '<a href="editar_peli.php?id=' . $fila["id_pelicula"] . '" class="btn btn-warning">Editar pelicula</a>';
-        echo '<a href="addTicket.php?id=' . $fila["id_pelicula"] . '" class="btn btn-info">Comprar un ticket</a>';
         echo "</div>";
       }
     }

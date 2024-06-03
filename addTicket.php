@@ -30,7 +30,7 @@ if ($result) {
     <div class="container">
         <div class="row">
             <div class="col-md-12">
-                <a href="cine_admin.php" class="btn btn-primary mt-4">Regresar</a>
+                <a href="cine_user.php" class="btn btn-primary mt-4">Regresar</a>
             </div>
         </div>
     </div>
