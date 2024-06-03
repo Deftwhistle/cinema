@@ -101,7 +101,7 @@ if ($error) {
     </div>
   </div>
 
-  <hr />
+  <hr/>
 
   <div class="container">
     <div class="row">
@@ -181,11 +181,19 @@ if ($error) {
     mysqli_close($conexion);
   ?>
 
+<h2 class="mt-3"><?= $titulo ?></h2>
+    <div class="container">
+      <div class="col">
+        <a href="<?= 'pdfMovies.php?id=' . $id_cine ?>" target="_blank" class="btn btn-warning">Generar PDF</a>
+      </div>
+    </div>
 
+
+
+    <div class="container">
   <?php
     if (count($result['datos']) > 0) {
       foreach ($result['datos'] as $fila) {
-        echo "<div class='col-md-3'>";
         echo "<div class='pelicula'>";
         echo  "<p><b>" . $fila["titulo"] . "</b></p>";
         echo  "<p><b>Director: </b>" . $fila["director"] . "</p>";
@@ -195,13 +203,13 @@ if ($error) {
         echo  ", " . $fila["protagonista2"];
         echo  ", " . $fila["protagonista3"] . "</p>";
         echo  "<p><b>Hora: </b>" . $fila["hora"] . "</p>";
-        echo "</div>";
+        echo '<a href="addTicket.php?id=' . $fila["id_pelicula"] . '" class="btn btn-info">Comprar un ticket</a>';
         echo "</div>";
       }
     }
   }
   ?>
-
+</div>
 
 
 </body>

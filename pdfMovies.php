@@ -4,8 +4,6 @@ require __DIR__ . "/vendor/autoload.php";
 use Dompdf\Dompdf;
 
 
-//function pdfCinema() {
-
     $dompdf = new Dompdf    ;
 
     $id_cine = $_GET['id'];
@@ -70,6 +68,7 @@ use Dompdf\Dompdf;
   <?php
     if (count($result['datos']) > 0) {
       foreach ($result['datos'] as $fila) {
+        $pdfContent = $pdfContent . "<hr class='solid'>";
         $pdfContent = $pdfContent . "<div class='col-md-3'>";
         $pdfContent = $pdfContent . "<div class='pelicula'>";
         $pdfContent = $pdfContent .  "<p><b>" . $fila["titulo"] . "</b></p>";
@@ -89,12 +88,8 @@ use Dompdf\Dompdf;
 
     $dompdf->render();
 
-    $dompdf->stream("test.pdf");
+    $dompdf->setPaper('A4');
 
-
-//}
-
-
-
+    $dompdf->stream('peliculas.pdf',array('Attachment'=>0));
 
 ?>

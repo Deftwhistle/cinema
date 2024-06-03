@@ -22,6 +22,7 @@ body {
 }
 
 .pelicula {
+    flex: 0 0 33%;
     display: inline-block;
     background-color: #fff;
     border-color: #555;
@@ -168,3 +169,13 @@ input[name="register"] {
     border-top: var(--size) solid black;
     top: 55%;
   }
+
+  .container {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+table {
+    border-color: #000;
+    border-width: 2px;
+}

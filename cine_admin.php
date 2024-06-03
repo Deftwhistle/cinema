@@ -65,20 +65,19 @@ if ($error) {
 <body>
 
 
-  <div class="container">
-    <div class="row">
-      <div class="col-md-12">
-        <a href="crear_cine.php" class="btn btn-primary mt-4">Crear cine</a>
+<h2 class="mt-3"><?= $titulo ?></h2>
+    <div class="container">
+      <div class="col">
+        <a href="crear_cine.php" class="btn btn-primary">Crear cine</a>
+        <a href="pdfMovieCount.php" target="_blank" class="btn btn-warning">Tickets vendidos por pelicula</a>
+        <a href="pdfCinemaCount.php" target="_blank" class="btn btn-info">Tickets vendidos por cinema</a>
       </div>
     </div>
-  </div>
-
 
 
   <div class="container">
     <div class="row">
       <div class="col-md-12">
-        <h2 class="mt-3"><?= $titulo ?></h2>
         <table id="table_cines" class="table table-striped table-sm">
           <thead>
             <tr>
@@ -101,7 +100,6 @@ if ($error) {
                   <td><?php echo $fila["dia"]; ?></td>
                   <td><?php echo $fila["tarifa"]; ?></td>
                   <td>
-                    <a href="<?= 'borrar_cine.php?id=' . $fila["id"] ?>">🗑️Borrar</a>
                     <a href="<?= 'editar_cine.php?id=' . $fila["id"] ?>">✏️Editar</a>
                   </td>
                 </tr>
@@ -195,25 +193,18 @@ if ($error) {
     mysqli_close($conexion);
   ?>
 
-    <div class="container">
-      <div class="row">
-        <div class="col-md-12">
-          <h2 class="mt-3"><?= $titulo ?></h2>
-          <a href="<?= 'crear_peli.php?id=' . $id_cine ?>" class="btn btn-primary mt-4">Crear pelicula</a>
-        </div>
-      </div>
-    </div>
 
+<h2 class="mt-3"><?= $titulo ?></h2>
     <div class="container">
-      <div class="row">
-        <div class="col-md-12">
-          <a href="<?= 'generatePdf.php?id=' . $id_cine ?>" class="btn btn-primary mt-4">Generar PDF</a>
-        </div>
+      <div class="col">
+        <a href="<?= 'crear_peli.php?id=' . $id_cine ?>" class="btn btn-primary">Crear pelicula</a>
+        <a href="<?= 'pdfMovies.php?id=' . $id_cine ?>" target="_blank" class="btn btn-warning">Generar PDF</a>
       </div>
     </div>
 
 
 
+<div class="container">
   <?php
     if (count($result['datos']) > 0) {
       foreach ($result['datos'] as $fila) {
@@ -227,13 +218,13 @@ if ($error) {
         echo  ", " . $fila["protagonista3"] . "</p>";
         echo  "<p><b>Hora: </b>" . $fila["hora"] . "</p>";
         echo '<a href="editar_peli.php?id=' . $fila["id_pelicula"] . '" class="btn btn-warning">Editar pelicula</a>';
-        echo '<a href="borrar_peli.php?id=' . $fila["id_pelicula"] . '" class="btn btn-info">Borrar pelicula</a>';
+        echo '<a href="addTicket.php?id=' . $fila["id_pelicula"] . '" class="btn btn-info">Comprar un ticket</a>';
         echo "</div>";
       }
     }
   }
   ?>
-
+</div>
 
 
 </body>
